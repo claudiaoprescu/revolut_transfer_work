@@ -1,0 +1,61 @@
+Project Setup
+
+
+Technologies used:
+Embedded Jetty Server 9.4.6.v20170531
+In memory HSQLDB 2.4.0
+Eclipse Luna
+Java 1.8
+
+Prerequisites:
+- Eclipse and Java 1.8
+
+Steps:
+- Download zip file from Github.
+- In Eclipse -> Import Existing Project Into Workspace.
+- Class Start Program -> Run As -> Java Application and observe the server started.
+- Open a web browser:
+http://localhost:8080/RevolutTransWork/account  -> will list (JSON Object) the existent accounts in DB.
+
+http://localhost:8080/RevolutTransWork/user -> will list (JSON Object) the existent users in DB.
+
+http://localhost:8080/RevolutTransWork/transaction -> will list (JSON Object) the existent transactions in DB (initially will be empty).
+
+
+To perform a transaction between accounts example:
+1. Retrieve existent accounts:
+Method: GET
+URL: http://localhost:8080/RevolutTransWork/account
+
+
+
+
+2. Transaction between 2 accounts:
+
+Method: PUT
+URL: http://localhost:8080/RevolutTransWork/transaction
+Body (JSON Example):
+{ 
+"from":"1",
+"to":"2",
+"amount":"10"
+}
+
+From represents the account from which we want to withdraw an amount.
+To represents the account in which we want to deposit the amount.
+Amount represents the value that we want to transfer from one account (from) to another account (to).
+
+
+3. Check transaction:
+Method: GET
+URL: http://localhost:8080/RevolutTransWork/transaction 
+
+
+
+
+4. Check accounts:
+Method: GET
+URL: http://localhost:8080/RevolutTransWork/account
+
+
+
